@@ -1,0 +1,151 @@
+/* ==========================================================
+   dashboard.css — Library Management System
+   Modern, professional theme
+   ========================================================== */
+
+.root-pane {
+    -fx-background-color: #F4F6F9;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------------- TOP BAR ---------------- */
+.top-bar {
+    -fx-background-color: #1F2A44;
+}
+
+.top-bar-icon {
+    -fx-font-size: 26px;
+}
+
+.top-bar-title {
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.top-bar-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #AEB8CC;
+}
+
+.user-name {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.user-status {
+    -fx-font-size: 11px;
+    -fx-text-fill: #6FCF97;
+}
+
+.user-avatar {
+    -fx-font-size: 26px;
+    -fx-padding: 0 0 0 6;
+}
+
+/* ---------------- SIDEBAR ---------------- */
+.sidebar {
+    -fx-background-color: #25304A;
+}
+
+.sidebar-section-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6E7A99;
+    -fx-padding: 0 0 8 8;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #C7CFE2;
+    -fx-font-size: 13px;
+    -fx-padding: 10 14 10 14;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: #313D5C;
+    -fx-text-fill: white;
+}
+
+.nav-button-active {
+    -fx-background-color: #3E63DD;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.nav-button-active:hover {
+    -fx-background-color: #3457C9;
+}
+
+.nav-button-logout {
+    -fx-text-fill: #FF8A8A;
+}
+
+.nav-button-logout:hover {
+    -fx-background-color: #3D2630;
+    -fx-text-fill: #FFB3B3;
+}
+
+/* ---------------- CENTER CONTENT ---------------- */
+.content-area {
+    -fx-background-color: #F4F6F9;
+}
+
+.welcome-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F2A44;
+}
+
+.welcome-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #6B7280;
+}
+
+/* ---------------- STAT CARDS ---------------- */
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(31,42,68,0.08), 12, 0, 0, 4);
+}
+
+.stat-icon {
+    -fx-font-size: 22px;
+}
+
+.stat-value {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F2A44;
+}
+
+.stat-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6B7280;
+}
+
+.stat-card-blue   { -fx-border-color: transparent transparent transparent #3E63DD; -fx-border-width: 0 0 0 4; -fx-border-radius: 14; }
+.stat-card-green  { -fx-border-color: transparent transparent transparent #2DBE7E; -fx-border-width: 0 0 0 4; -fx-border-radius: 14; }
+.stat-card-orange { -fx-border-color: transparent transparent transparent #F2A93B; -fx-border-width: 0 0 0 4; -fx-border-radius: 14; }
+.stat-card-red    { -fx-border-color: transparent transparent transparent #E5534B; -fx-border-width: 0 0 0 4; -fx-border-radius: 14; }
+
+/* ---------------- INFO PANEL ---------------- */
+.info-panel {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(31,42,68,0.06), 10, 0, 0, 3);
+}
+
+.panel-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F2A44;
+}
+
+.panel-placeholder {
+    -fx-font-size: 12px;
+    -fx-text-fill: #9CA3AF;
+}
