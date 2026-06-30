@@ -31,6 +31,19 @@
             <Label styleClass="header-subtitle" text="Add, update and search the book catalog" />
          </children>
       </VBox>
+<!-- Search bar -->
+      <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="search-bar">
+         <padding>
+            <Insets top="14.0" right="24.0" bottom="14.0" left="24.0" />
+         </padding>
+         <children>
+            <Label text="Search by" styleClass="search-label" />
+            <ComboBox fx:id="cmbSearchBy" prefWidth="150.0" styleClass="combo-box"/>
+
+            <TextField fx:id="txtSearch" promptText="Type to search..." styleClass="text-field" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#searchBook" text="Search" styleClass="btn, btn-primary" />
+         </children>
+      </HBox>
 
       <!-- Form card -->
       <VBox styleClass="card" VBox.vgrow="NEVER">
@@ -49,32 +62,32 @@
                   <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                  
                </rowConstraints>
                <children>
                   <!-- Row 0: Search -->
-                  <Label styleClass="field-label" text="Search" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <!-- <Label styleClass="field-label" text="Search" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                   <TextField fx:id="txtSearch" promptText="type here..." styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                   <Label styleClass="field-label" text="Search By" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                  <ComboBox fx:id="cmbSearchBy" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                  <ComboBox fx:id="cmbSearchBy" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="0"/> -->
 
                   <!-- Row 1: Code | Title -->
-                  <Label styleClass="field-label" text="Code" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                  <TextField fx:id="txtCode" promptText="e.g. BK-001" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label styleClass="field-label" text="Title" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <TextField fx:id="txtTitle" promptText="Book title" styleClass="text-field" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label styleClass="field-label" text="Code" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <TextField fx:id="txtCode" promptText="e.g. BK-001" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  <Label styleClass="field-label" text="Title" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                  <TextField fx:id="txtTitle" promptText="Book title" styleClass="text-field" GridPane.columnIndex="3" GridPane.rowIndex="0" />
 
                   <!-- Row 2: Author | Category -->
-                  <Label styleClass="field-label" text="Author" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtAuthor" promptText="Author name" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label styleClass="field-label" text="Category" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtCategory" promptText="e.g. Fiction" styleClass="text-field" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label styleClass="field-label" text="Author" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtAuthor" promptText="Author name" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label styleClass="field-label" text="Category" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtCategory" promptText="e.g. Fiction" styleClass="text-field" GridPane.columnIndex="3" GridPane.rowIndex="1" />
 
                   <!-- Row 3: Year | Copies -->
-                  <Label styleClass="field-label" text="Year" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                  <TextField fx:id="txtYear" promptText="e.g. 2024" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label styleClass="field-label" text="Copies" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <TextField fx:id="txtCopies" promptText="0" styleClass="text-field" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Label styleClass="field-label" text="Year" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtYear" promptText="e.g. 2024" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label styleClass="field-label" text="Copies" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtCopies" promptText="0" styleClass="text-field" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                 </children>
             </GridPane>
 
@@ -87,7 +100,7 @@
                   <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addBook" styleClass="btn, btn-primary" text="Add" />
                   <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#updateBook" styleClass="btn, btn-secondary" text="Update" />
                   <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deleteBook" styleClass="btn, btn-danger" text="Delete" />
-                  <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#searchBook" styleClass="btn, btn-secondary" text="Search" />
+
                   <Button fx:id="btnClear" mnemonicParsing="false" onAction="#clearForm" styleClass="btn, btn-ghost" text="Clear" textAlignment="CENTER" />
                </children>
                <VBox.margin>

@@ -19,6 +19,56 @@
     -fx-font-size: 12px;
 }
 
+/* ---------- Search bar ---------- */
+.search-bar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent transparent #e5e7eb transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.search-label {
+    -fx-text-fill: #374151;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+}
+
+.combo-box,
+.combo-box-base {
+    -fx-background-color: #f9fafb;
+    -fx-background-radius: 6;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 6;
+    -fx-padding: 1;
+}
+.combo-box:focused,
+.combo-box-base:focused {
+    -fx-border-color: #2563eb;
+}
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 6 6 0;
+}
+.combo-box .arrow {
+    -fx-background-color: #6b7280;
+}
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1f2937;
+    -fx-padding: 6 10 6 10;
+    -fx-font-size: 13px;
+}
+.combo-box-popup .list-view {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 3);
+}
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #eff6ff;
+    -fx-text-fill: #1d4ed8;
+}
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: #ffffff;
+}
 /* ---------- Form card ---------- */
 .card {
     -fx-background-color: #ffffff;
