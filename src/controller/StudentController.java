@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.Book;
 import model.Student;
 import java.net.URL;
 import service.StudentService;
@@ -53,7 +52,7 @@ public class StudentController implements Initializable {
         colMajor.setCellValueFactory(new PropertyValueFactory<>("major"));
         tblStudents.setItems(studentList);
         studentList.setAll(studentService.getAllStudents());
-        
+
         tblStudents.setItems(studentList);
         tblStudents.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, selectedStudent) -> {
             if (selectedStudent != null) {
@@ -65,6 +64,19 @@ public class StudentController implements Initializable {
             }
         });
     }
+
+    private void showAlert(Alert.AlertType type,
+            String title,
+            String message) {
+
+        Alert alert = new Alert(type);
+
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        alert.showAndWait();
+    }
  @FXML
     private void addStudent() {
 
@@ -74,10 +86,15 @@ public class StudentController implements Initializable {
                 || txtEmail.getText().isEmpty()
                 || txtMajor.getText().isEmpty()) {
 
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill in all fields.");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.WARNING,
+                    "Missing Information",
+                    "Please fill in all fields.");
+            return;
+        }
+        if (!txtEmail.getText().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            showAlert(Alert.AlertType.WARNING,
+                    "Invalid Email",
+                    "Please enter a valid email address.");
             return;
         }
         Student student = new Student(
@@ -90,10 +107,9 @@ public class StudentController implements Initializable {
             studentList.setAll(studentService.getAllStudents());
             clearFields();
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("A student with this CNE already exists.");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.ERROR,
+                    "Error",
+                    "A student with this CNE already exists.");
         }
     }
 
@@ -124,20 +140,43 @@ public class StudentController implements Initializable {
     @FXML
     private void deleteStudent() {
 
-        if (studentService.deleteStudent(txtCne.getText())) {
+        Student selectedStudent = tblStudents.getSelectionModel().getSelectedItem();
+
+        if (selectedStudent == null) {
+
+            showAlert(Alert.AlertType.WARNING,
+                    "No Selection",
+                    "Please select a student.");
+
+            return;
+        }
+
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+
+        confirm.setTitle("Delete Student");
+        confirm.setHeaderText(null);
+        confirm.setContentText("Are you sure you want to delete this student?");
+
+        if (confirm.showAndWait().get() == ButtonType.OK) {
+
+            studentService.deleteStudent(selectedStudent.getCne());
+
             studentList.setAll(studentService.getAllStudents());
+
             clearFields();
+
+            showAlert(Alert.AlertType.INFORMATION,
+                    "Deleted",
+                    "Student deleted successfully.");
         }
     }
 
     @FXML
     private void searchStudent() {
         if (cmbSearchBy.getValue() == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Search");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select a search criterion.");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.WARNING,
+                    "Search",
+                    "Please select a search criterion.");
             return;
         }
         if (cmbSearchBy.getValue().equals("CNE")) {
@@ -146,11 +185,9 @@ public class StudentController implements Initializable {
             studentList.setAll(studentService.searchByMajor(txtSearch.getText()));
         }
         if (studentList.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Search");
-            alert.setHeaderText(null);
-            alert.setContentText("No students found.");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.INFORMATION,
+                    "Search",
+                    "No students found.");
         }
     }
 

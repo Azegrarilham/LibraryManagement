@@ -72,37 +72,62 @@ public class BookController implements Initializable {
     @FXML
     private void addBook() {
 
-        if (txtCode.getText().isEmpty()
-                || txtTitle.getText().isEmpty()
-                || txtAuthor.getText().isEmpty()
-                || txtCategory.getText().isEmpty()
-                || txtYear.getText().isEmpty()
-                || txtCopies.getText().isEmpty()) {
+        if (txtCode.getText().isEmpty() ||
+                txtTitle.getText().isEmpty() ||
+                txtAuthor.getText().isEmpty() ||
+                txtCategory.getText().isEmpty() ||
+                txtYear.getText().isEmpty() ||
+                txtCopies.getText().isEmpty()) {
 
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill in all fields.");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.WARNING,
+                    "Missing Information",
+                    "Please fill in all fields.");
+
             return;
         }
-        Book book = new Book(
-                txtCode.getText(),
-                txtTitle.getText(),
-                txtAuthor.getText(),
-                txtCategory.getText(),
-                Integer.parseInt(txtYear.getText()),
-                Integer.parseInt(txtCopies.getText()));
-        if (bookService.addBook(book)) {
+
+        try {
+
+            int year = Integer.parseInt(txtYear.getText());
+            int copies = Integer.parseInt(txtCopies.getText());
+
+            Book book = new Book(
+                    txtCode.getText(),
+                    txtTitle.getText(),
+                    txtAuthor.getText(),
+                    txtCategory.getText(),
+                    year,
+                    copies);
+
+            bookService.addBook(book);
             bookList.setAll(bookService.getAllBooks());
+
+            showAlert(Alert.AlertType.INFORMATION,
+                    "Success",
+                    "Book added successfully.");
+
             clearFields();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("A book with this code already exists.");
-            alert.showAndWait();
+
+        } catch (NumberFormatException e) {
+
+            showAlert(Alert.AlertType.ERROR,
+                    "Invalid Input",
+                    "Year and Copies must be numbers.");
         }
     }
 
+    private void showAlert(Alert.AlertType type,
+            String title,
+            String message) {
+
+        Alert alert = new Alert(type);
+
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        alert.showAndWait();
+    }
     private void clearFields() {
 
         txtCode.clear();
@@ -133,9 +158,34 @@ public class BookController implements Initializable {
     @FXML
     private void deleteBook() {
 
-        if (bookService.deleteBook(txtCode.getText())) {
+        Book selectedBook = tblBooks.getSelectionModel().getSelectedItem();
+
+        if (selectedBook == null) {
+
+            showAlert(Alert.AlertType.WARNING,
+                    "No Selection",
+                    "Please select a book.");
+
+            return;
+        }
+
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+
+        confirm.setTitle("Delete Book");
+        confirm.setHeaderText(null);
+        confirm.setContentText("Are you sure you want to delete this book?");
+
+        if (confirm.showAndWait().get() == ButtonType.OK) {
+
+            bookService.deleteBook(selectedBook.getCode());
+
             bookList.setAll(bookService.getAllBooks());
+
             clearFields();
+
+            showAlert(Alert.AlertType.INFORMATION,
+                    "Deleted",
+                    "Book deleted successfully.");
         }
     }
 
