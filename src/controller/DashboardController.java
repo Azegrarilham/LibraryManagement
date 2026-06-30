@@ -4,25 +4,59 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
+
 
 public class DashboardController {
 
     @FXML
-    private Button btnBooks;
+    private AnchorPane contentPane;
+
+    // @FXML
+    // public void initialize() {
+    //     loadPage("/view/books.fxml");
+    // }
 
     @FXML
-    private void openBooks() throws IOException {
+    private void openBooks() {
+        loadPage("/view/books.fxml");
+    }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/books.fxml"));
+    @FXML
+    private void openStudents() {
+        loadPage("/view/students.fxml");
+    }
 
-        Scene scene = new Scene(loader.load());
+    @FXML
+    private void openLoans() {
+        loadPage("/view/loans.fxml");
+    }
 
-        Stage stage = (Stage) btnBooks.getScene().getWindow();
+    @FXML
+    private void openStatistics() {
+        loadPage("/view/statistics.fxml");
+    }
 
-        stage.setScene(scene);
-        stage.setTitle("Books Management");
+    private void loadPage(String fxml) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Node view = loader.load();
+
+            AnchorPane.setTopAnchor(view, 0.0);
+            AnchorPane.setBottomAnchor(view, 0.0);
+            AnchorPane.setLeftAnchor(view, 0.0);
+            AnchorPane.setRightAnchor(view, 0.0);
+
+            contentPane.getChildren().setAll(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void Logout() {
+        // Implement logout logic here
+        this.contentPane.getScene().getWindow().hide(); // Close the current window
+        System.out.println("Logging out...");
     }
 }

@@ -3,13 +3,14 @@ package service;
 import java.util.ArrayList;
 
 import model.Book;
+import util.FileManager;
 
 public class BookService {
 
     private ArrayList<Book> books;
 
     public BookService() {
-        books = new ArrayList<>();
+        books = FileManager.load("books.dat");
     }
 
     // Add a book
@@ -19,6 +20,7 @@ public class BookService {
         }
 
         books.add(book);
+        FileManager.save("books.dat", books);
         return true;
     }
 
@@ -73,6 +75,7 @@ public class BookService {
             book.setCategory(updatedBook.getCategory());
             book.setPublicationYear(updatedBook.getPublicationYear());
             book.setAvailableCopies(updatedBook.getAvailableCopies());
+            FileManager.save("books.dat", books);
             return true;
         }
 
@@ -85,6 +88,7 @@ public class BookService {
 
         if (book != null) {
             books.remove(book);
+            FileManager.save("books.dat", books);
             return true;
         }
 

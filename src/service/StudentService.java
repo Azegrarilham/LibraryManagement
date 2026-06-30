@@ -3,13 +3,21 @@ package service;
 import java.util.ArrayList;
 
 import model.Student;
+import util.FileManager;
 
 public class StudentService {
 
     private ArrayList<Student> students = new ArrayList<>();
-
-    public void addStudent(Student student) {
-        students.add(student);
+    public StudentService() {
+        students = FileManager.load("students.dat");
+    }
+    public boolean addStudent(Student student) {
+        if (findStudentByCne(student.getCne()) == null) {
+            students.add(student);
+            FileManager.save("students.dat", students);
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<Student> getAllStudents() {
@@ -24,7 +32,18 @@ public class StudentService {
         }
         return null;
     }
+    // Search by major
+    public ArrayList<Student> searchByMajor(String major) {
+        ArrayList<Student> result = new ArrayList<>();
 
+        for (Student student : students) {
+            if (student.getMajor().toLowerCase().contains(major.toLowerCase())) {
+                result.add(student);
+            }
+        }
+
+        return result;
+    }
     public boolean updateStudent(Student updatedStudent) {
         Student student = findStudentByCne(updatedStudent.getCne());
 
@@ -33,6 +52,7 @@ public class StudentService {
             student.setLastName(updatedStudent.getLastName());
             student.setMajor(updatedStudent.getMajor());
             student.setEmail(updatedStudent.getEmail());
+            FileManager.save("students.dat", students);
             return true;
         }
 
@@ -44,6 +64,7 @@ public class StudentService {
 
         if (student != null) {
             students.remove(student);
+            FileManager.save("students.dat", students);
             return true;
         }
 

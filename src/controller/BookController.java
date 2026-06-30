@@ -46,15 +46,16 @@ public class BookController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        tblBooks.setItems(bookList);
         colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
         colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         colAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
         colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
         colYear.setCellValueFactory(new PropertyValueFactory<>("publicationYear"));
         colCopies.setCellValueFactory(new PropertyValueFactory<>("availableCopies"));
-        cmbSearchBy.getItems().addAll("Title", "Author");
-        cmbSearchBy.setPromptText("Search by");
 
+        // Load books from the service
+        bookList.setAll(bookService.getAllBooks());
         tblBooks.setItems(bookList);
         tblBooks.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, selectedBook) -> {
             if (selectedBook != null) {
@@ -152,6 +153,13 @@ public class BookController implements Initializable {
             bookList.setAll(bookService.searchByTitle(txtSearch.getText()));
         } else {
             bookList.setAll(bookService.searchByAuthor(txtSearch.getText()));
+        }
+        if (bookList.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Search");
+            alert.setHeaderText(null);
+            alert.setContentText("No books found.");
+            alert.showAndWait();
         }
     }
 

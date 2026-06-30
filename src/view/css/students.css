@@ -1,0 +1,180 @@
+/* students.css — companion stylesheet for students.fxml
+   Same design system as books.css, with a green accent (instead of blue)
+   so the Students screen is visually distinguishable inside the dashboard. */
+
+.root-pane {
+    -fx-background-color: #f3f4f6;
+}
+
+/* ---------- Header ---------- */
+.header-bar {
+    -fx-background-color: #1f2937;
+    -fx-padding: 18 24 18 24;
+    -fx-spacing: 4;
+}
+.header-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+.header-subtitle {
+    -fx-text-fill: #9ca3af;
+    -fx-font-size: 12px;
+}
+
+/* ---------- Search bar ---------- */
+.search-bar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent transparent #e5e7eb transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.search-label {
+    -fx-text-fill: #374151;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+}
+
+.combo-box,
+.combo-box-base {
+    -fx-background-color: #f9fafb;
+    -fx-background-radius: 6;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 6;
+    -fx-padding: 1;
+}
+.combo-box:focused,
+.combo-box-base:focused {
+    -fx-border-color: #16a34a;
+}
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 6 6 0;
+}
+.combo-box .arrow {
+    -fx-background-color: #6b7280;
+}
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1f2937;
+    -fx-padding: 6 10 6 10;
+    -fx-font-size: 13px;
+}
+.combo-box-popup .list-view {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 3);
+}
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #f0fdf4;
+    -fx-text-fill: #15803d;
+}
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: #16a34a;
+    -fx-text-fill: #ffffff;
+}
+
+/* ---------- Form card ---------- */
+.card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10, 0, 0, 3);
+    -fx-padding: 10;
+}
+
+.field-label {
+    -fx-text-fill: #374151;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+}
+
+.text-field {
+    -fx-background-color: #f9fafb;
+    -fx-background-radius: 6;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 6;
+    -fx-padding: 6 10 6 10;
+    -fx-font-size: 13px;
+}
+.text-field:focused {
+    -fx-border-color: #16a34a;
+    -fx-background-color: #ffffff;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    -fx-background-radius: 6;
+    -fx-padding: 8 18 8 18;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+}
+
+.btn-primary {
+    -fx-background-color: #16a34a;
+    -fx-text-fill: white;
+}
+.btn-primary:hover { -fx-background-color: #15803d; }
+
+.btn-secondary {
+    -fx-background-color: #e5e7eb;
+    -fx-text-fill: #1f2937;
+}
+.btn-secondary:hover { -fx-background-color: #d1d5db; }
+
+.btn-danger {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+}
+.btn-danger:hover { -fx-background-color: #b91c1c; }
+
+.btn-ghost {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6b7280;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 6;
+}
+.btn-ghost:hover { -fx-background-color: #f3f4f6; }
+
+/* ---------- Table ---------- */
+.table-card {
+    -fx-background-color: transparent;
+}
+
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
+    -fx-border-color: transparent;
+}
+.table-view .column-header-background {
+    -fx-background-color: #f9fafb;
+    -fx-background-radius: 10 10 0 0;
+}
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #e5e7eb transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.table-view .column-header .label {
+    -fx-text-fill: #374151;
+    -fx-font-weight: 700;
+    -fx-font-size: 12px;
+}
+.table-view .table-row-cell {
+    -fx-border-color: transparent transparent #f1f5f9 transparent;
+    -fx-table-cell-border-color: transparent;
+}
+.table-view .table-row-cell:odd {
+    -fx-background-color: #fafafa;
+}
+.table-view .table-row-cell:selected {
+    -fx-background-color: #dcfce7;
+}
+.table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: #14532d;
+}
+.table-view .table-cell {
+    -fx-padding: 8 10 8 10;
+    -fx-font-size: 13px;
+    -fx-text-fill: #1f2937;
+}
