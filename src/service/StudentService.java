@@ -70,4 +70,9 @@ public class StudentService {
 
         return false;
     }
+
+    public int getTotalStudents() {
+        return students.size();
+    }
+    
 }

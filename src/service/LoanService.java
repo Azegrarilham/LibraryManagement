@@ -82,4 +82,34 @@ public class LoanService {
 
         return returned;
     }
+
+    public int getReturnedLoansCount() {
+
+        int count = 0;
+
+        for (Loan loan : loans) {
+            if (loan.getStatus().equalsIgnoreCase("Returned")) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+    public int getTotalLoans() {
+        return loans.size();
+    }
+
+    public int getActiveLoans() {
+
+        int count = 0;
+
+        for (Loan loan : loans) {
+            if (loan.getStatus().equalsIgnoreCase("Borrowed")) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
 }

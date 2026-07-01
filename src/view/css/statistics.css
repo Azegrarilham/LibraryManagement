@@ -1,0 +1,148 @@
+/* statistics.css — companion stylesheet for statistics.fxml
+   Purple primary accent. Each stat card has its own colour identity
+   via a thick left border and a tinted background. */
+
+.root-pane {
+    -fx-background-color: #f3f4f6;
+}
+
+/* ---------- Header ---------- */
+.header-bar {
+    -fx-background-color: #1f2937;
+    -fx-padding: 18 24 18 24;
+    -fx-spacing: 4;
+}
+.header-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+.header-subtitle {
+    -fx-text-fill: #9ca3af;
+    -fx-font-size: 12px;
+}
+
+/* ---------- Section header row ---------- */
+.section-title {
+    -fx-text-fill: #111827;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.section-subtitle {
+    -fx-text-fill: #9ca3af;
+    -fx-font-size: 11px;
+}
+.row-label {
+    -fx-text-fill: #9ca3af;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    /* letter-spacing not supported in JavaFX CSS; compensate with padding */
+    -fx-padding: 0 0 -6 2;
+}
+.section-sep {
+    -fx-background-color: #e5e7eb;
+    -fx-padding: 0;
+}
+
+/* ---------- Refresh button ---------- */
+.btn-refresh {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 8;
+    -fx-text-fill: #374151;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 4, 0, 0, 1);
+}
+.btn-refresh:hover {
+    -fx-background-color: #f9fafb;
+    -fx-border-color: #9ca3af;
+}
+.btn-refresh:pressed {
+    -fx-background-color: #f3f4f6;
+}
+
+/* ---------- Base stat card ---------- */
+.stat-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 2);
+    -fx-padding: 20 20 18 20;
+    -fx-spacing: 8;
+    /* thick left accent border — overridden per colour variant below */
+    -fx-border-width: 0 0 0 4;
+    -fx-border-radius: 12;
+}
+
+/* card sub-elements */
+.card-icon {
+    -fx-font-size: 22px;
+}
+.card-label {
+    -fx-text-fill: #6b7280;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+}
+.card-value {
+    -fx-text-fill: #111827;
+    -fx-font-size: 38px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 0 2 0;
+}
+.card-desc {
+    -fx-text-fill: #9ca3af;
+    -fx-font-size: 11px;
+}
+
+/* ---------- Per-card colour variants ---------- */
+
+/* Indigo — Total Books */
+.card-indigo {
+    -fx-border-color: #6366f1;
+    -fx-background-color: linear-gradient(to bottom right, #ffffff, #f5f3ff);
+}
+.card-indigo .card-value { -fx-text-fill: #4338ca; }
+
+/* Green — Available Books */
+.card-green {
+    -fx-border-color: #16a34a;
+    -fx-background-color: linear-gradient(to bottom right, #ffffff, #f0fdf4);
+}
+.card-green .card-value { -fx-text-fill: #15803d; }
+
+/* Amber — Borrowed Books */
+.card-amber {
+    -fx-border-color: #d97706;
+    -fx-background-color: linear-gradient(to bottom right, #ffffff, #fffbeb);
+}
+.card-amber .card-value { -fx-text-fill: #b45309; }
+
+/* Blue — Total Students */
+.card-blue {
+    -fx-border-color: #2563eb;
+    -fx-background-color: linear-gradient(to bottom right, #ffffff, #eff6ff);
+}
+.card-blue .card-value { -fx-text-fill: #1d4ed8; }
+
+/* Purple — Total Loans */
+.card-purple {
+    -fx-border-color: #7c3aed;
+    -fx-background-color: linear-gradient(to bottom right, #ffffff, #f5f3ff);
+}
+.card-purple .card-value { -fx-text-fill: #6d28d9; }
+
+/* Teal — Returned Loans */
+.card-teal {
+    -fx-border-color: #0891b2;
+    -fx-background-color: linear-gradient(to bottom right, #ffffff, #ecfeff);
+}
+.card-teal .card-value { -fx-text-fill: #0e7490; }
+
+/* Red — Active Loans */
+.card-red {
+    -fx-border-color: #dc2626;
+    -fx-background-color: linear-gradient(to bottom right, #ffffff, #fef2f2);
+}
+.card-red .card-value { -fx-text-fill: #b91c1c; }

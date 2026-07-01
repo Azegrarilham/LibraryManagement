@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fillWidth="true" styleClass="root-pane" stylesheets="@css/statistics.css"
+      xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.StatisticsController" VBox.vgrow="ALWAYS">
+   <children>
+
+      <!-- Header -->
+      <VBox styleClass="header-bar">
+         <children>
+            <Label styleClass="header-title" text="Statistics">
+               <font><Font size="22.0" /></font>
+            </Label>
+            <Label styleClass="header-subtitle" text="Real-time overview of your library" />
+         </children>
+      </VBox>
+
+      <!-- Page body -->
+      <VBox spacing="24.0" VBox.vgrow="ALWAYS">
+         <padding>
+            <Insets bottom="28.0" left="28.0" right="28.0" top="24.0" />
+         </padding>
+         <children>
+
+            <!-- Section label + Refresh -->
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <VBox spacing="2.0">
+                     <children>
+                        <Label styleClass="section-title" text="Library Overview" />
+                        <Label fx:id="lblLastUpdated" styleClass="section-subtitle" text="Last updated: —" />
+                     </children>
+                  </VBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#refresh"
+                          styleClass="btn-refresh" text="⟳  Refresh" />
+               </children>
+            </HBox>
+
+            <!-- ── Row 1 : Books ── -->
+            <Label styleClass="row-label" text="BOOKS" />
+            <HBox spacing="16.0">
+               <children>
+
+                  <!-- Total Books -->
+                  <VBox styleClass="stat-card, card-indigo" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                           <children>
+                              <Label styleClass="card-icon" text="📚" />
+                              <Label styleClass="card-label" text="Total Books" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="lblTotalBooks" styleClass="card-value" text="—" />
+                        <Label styleClass="card-desc" text="All titles in the catalog" />
+                     </children>
+                  </VBox>
+
+                  <!-- Available Books -->
+                  <VBox styleClass="stat-card, card-green" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                           <children>
+                              <Label styleClass="card-icon" text="✅" />
+                              <Label styleClass="card-label" text="Available Books" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="lblAvailableBooks" styleClass="card-value" text="—" />
+                        <Label styleClass="card-desc" text="Copies ready to borrow" />
+                     </children>
+                  </VBox>
+
+                  <!-- Borrowed Books -->
+                  <VBox styleClass="stat-card, card-amber" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                           <children>
+                              <Label styleClass="card-icon" text="📖" />
+                              <Label styleClass="card-label" text="Borrowed Books" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="lblBorrowedBooks" styleClass="card-value" text="—" />
+                        <Label styleClass="card-desc" text="Copies currently on loan" />
+                     </children>
+                  </VBox>
+
+               </children>
+            </HBox>
+
+            <Separator styleClass="section-sep" />
+
+            <!-- ── Row 2 : Students & Loans ── -->
+            <Label styleClass="row-label" text="STUDENTS &amp; LOANS" />
+            <HBox spacing="16.0">
+               <children>
+
+                  <!-- Total Students -->
+                  <VBox styleClass="stat-card, card-blue" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                           <children>
+                              <Label styleClass="card-icon" text="🎓" />
+                              <Label styleClass="card-label" text="Total Students" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="lblTotalStudents" styleClass="card-value" text="—" />
+                        <Label styleClass="card-desc" text="Registered members" />
+                     </children>
+                  </VBox>
+
+                  <!-- Total Loans -->
+                  <VBox styleClass="stat-card, card-purple" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                           <children>
+                              <Label styleClass="card-icon" text="🔄" />
+                              <Label styleClass="card-label" text="Total Loans" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="lblTotalLoans" styleClass="card-value" text="—" />
+                        <Label styleClass="card-desc" text="All-time borrowing records" />
+                     </children>
+                  </VBox>
+
+                  <!-- Returned Loans -->
+                  <VBox styleClass="stat-card, card-teal" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                           <children>
+                              <Label styleClass="card-icon" text="↩" />
+                              <Label styleClass="card-label" text="Returned Loans" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="lblReturnedLoans" styleClass="card-value" text="—" />
+                        <Label styleClass="card-desc" text="Successfully returned" />
+                     </children>
+                  </VBox>
+
+                  <!-- Active Loans -->
+                  <VBox styleClass="stat-card, card-red" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                           <children>
+                              <Label styleClass="card-icon" text="⏳" />
+                              <Label styleClass="card-label" text="Active Loans" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="lblActiveLoans" styleClass="card-value" text="—" />
+                        <Label styleClass="card-desc" text="Still out with students" />
+                     </children>
+                  </VBox>
+
+               </children>
+            </HBox>
+
+            <!-- Spacer to push everything up -->
+            <Region VBox.vgrow="ALWAYS" />
+
+         </children>
+      </VBox>
+
+   </children>
+</VBox>

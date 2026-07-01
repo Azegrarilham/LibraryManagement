@@ -3,6 +3,8 @@ package service;
 import java.util.ArrayList;
 
 import model.Book;
+import model.Loan;
+import util.DataManager;
 import util.FileManager;
 
 public class BookService {
@@ -97,5 +99,33 @@ public class BookService {
 
     public void saveBooks() {
         FileManager.save("books.dat", books);
+    }
+
+    public int getTotalBooks() {
+        return books.size();
+    }
+
+    public int getAvailableBooks() {
+
+        int total = 0;
+
+        for (Book book : books) {
+            total += book.getAvailableCopies();
+        }
+
+        return total;
+    }
+
+    public int getBorrowedBooks() {
+
+        int borrowed = 0;
+
+        for (Loan loan : DataManager.loanService.getAllLoans()) {
+            if (loan.getStatus().equalsIgnoreCase("Borrowed")) {
+                borrowed++;
+            }
+        }
+
+        return borrowed;
     }
 }
