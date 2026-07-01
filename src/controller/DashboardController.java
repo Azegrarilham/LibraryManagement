@@ -1,43 +1,64 @@
 package controller;
 
 import java.io.IOException;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+
 
 
 public class DashboardController {
 
     @FXML
     private AnchorPane contentPane;
-
-    // @FXML
-    // public void initialize() {
-    //     loadPage("/view/books.fxml");
-    // }
+    @FXML
+    private Button btnBooks;
+    @FXML
+    private Button btnStudents;
+    @FXML
+    private Button btnLoans;
+    @FXML
+    private Button btnStatistics;
+    @FXML
+    public void initialize() {
+        setActiveButton(null);
+    }
 
     @FXML
     private void openBooks() {
+        setActiveButton(btnBooks);
         loadPage("/view/books.fxml");
     }
 
     @FXML
     private void openStudents() {
+        setActiveButton(btnStudents);
         loadPage("/view/students.fxml");
     }
 
     @FXML
     private void openLoans() {
+        setActiveButton(btnLoans);
         loadPage("/view/loans.fxml");
     }
 
     @FXML
     private void openStatistics() {
+        setActiveButton(btnStatistics);
         loadPage("/view/statistics.fxml");
     }
 
+    private void setActiveButton(Button active) {
+        Button[] navButtons = { btnBooks, btnStudents, btnLoans, btnStatistics };
+        for (Button btn : navButtons) {
+            btn.getStyleClass().remove("nav-button-active");
+        }
+        if (active != null) {
+            active.getStyleClass().add("nav-button-active");
+        }
+    }
     private void loadPage(String fxml) {
 
         try {

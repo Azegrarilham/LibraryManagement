@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import model.Book;
 import service.BookService;
+import util.DataManager;
 
 public class BookController implements Initializable {
 
@@ -40,7 +41,7 @@ public class BookController implements Initializable {
     @FXML
     private TableColumn<Book, Integer> colCopies;
 
-    private BookService bookService = new BookService();
+    private BookService bookService = DataManager.bookService;
     private ObservableList<Book> bookList = FXCollections.observableArrayList();
 
     @Override

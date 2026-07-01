@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.Student;
 import java.net.URL;
 import service.StudentService;
+import util.DataManager;
 
 public class StudentController implements Initializable {
     @FXML private ComboBox<String> cmbSearchBy;
@@ -38,7 +39,7 @@ public class StudentController implements Initializable {
     @FXML private TableColumn<Student, String> colMajor;
 
 
-    private StudentService studentService = new StudentService();
+    private StudentService studentService = DataManager.studentService;
     private ObservableList<Student> studentList = FXCollections.observableArrayList();
 
 

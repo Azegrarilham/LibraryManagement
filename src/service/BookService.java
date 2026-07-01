@@ -94,4 +94,8 @@ public class BookService {
 
         return false;
     }
+
+    public void saveBooks() {
+        FileManager.save("books.dat", books);
+    }
 }

@@ -72,15 +72,20 @@ public class Book implements Serializable {
         this.availableCopies = availableCopies;
     }
 
+    // @Override
+    // public String toString() {
+    //     return "Book{" +
+    //             "code='" + code + '\'' +
+    //             ", title='" + title + '\'' +
+    //             ", author='" + author + '\'' +
+    //             ", category='" + category + '\'' +
+    //             ", publicationYear=" + publicationYear +
+    //             ", availableCopies=" + availableCopies +
+    //             '}';
+    // }
+
     @Override
     public String toString() {
-        return "Book{" +
-                "code='" + code + '\'' +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", category='" + category + '\'' +
-                ", publicationYear=" + publicationYear +
-                ", availableCopies=" + availableCopies +
-                '}';
+        return title;
     }
 }

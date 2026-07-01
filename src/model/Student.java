@@ -64,14 +64,19 @@ public class Student implements Serializable {
         this.email = email;
     }
 
+    // @Override
+    // public String toString() {
+    //     return "Student{" +
+    //             "cne='" + cne + '\'' +
+    //             ", firstName='" + firstName + '\'' +
+    //             ", lastName='" + lastName + '\'' +
+    //             ", major='" + major + '\'' +
+    //             ", email='" + email + '\'' +
+    //             '}';
+    // }
+
     @Override
     public String toString() {
-        return "Student{" +
-                "cne='" + cne + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", major='" + major + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return firstName + " " + lastName;
     }
 }
