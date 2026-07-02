@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import model.Book;
 import service.BookService;
+import service.LoanService;
 import util.DataManager;
 
 public class BookController implements Initializable {
@@ -40,7 +41,7 @@ public class BookController implements Initializable {
 
     @FXML
     private TableColumn<Book, Integer> colCopies;
-
+    private final LoanService loanService = DataManager.loanService;
     private BookService bookService = DataManager.bookService;
     private ObservableList<Book> bookList = FXCollections.observableArrayList();
 
@@ -129,6 +130,7 @@ public class BookController implements Initializable {
 
         alert.showAndWait();
     }
+
     private void clearFields() {
 
         txtCode.clear();
@@ -169,7 +171,14 @@ public class BookController implements Initializable {
 
             return;
         }
+        if (loanService.hasActiveLoan(selectedBook)) {
 
+            showAlert(Alert.AlertType.ERROR,
+                    "Delete Book",
+                    "This book cannot be deleted because it is currently borrowed.");
+
+            return;
+        }
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
 
         confirm.setTitle("Delete Book");

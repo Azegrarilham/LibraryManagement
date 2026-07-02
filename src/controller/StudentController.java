@@ -10,38 +10,56 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Student;
 import java.net.URL;
+
+import service.LoanService;
 import service.StudentService;
 import util.DataManager;
 
 public class StudentController implements Initializable {
-    @FXML private ComboBox<String> cmbSearchBy;
-    @FXML private TextField txtSearch;
-    @FXML private Button btnSearch;
+    @FXML
+    private ComboBox<String> cmbSearchBy;
+    @FXML
+    private TextField txtSearch;
+    @FXML
+    private Button btnSearch;
 
-    @FXML private TextField txtCne;
-    @FXML private TextField txtFName;
-    @FXML private TextField txtLName;
-    @FXML private TextField txtEmail;
-    @FXML private TextField txtMajor;
+    @FXML
+    private TextField txtCne;
+    @FXML
+    private TextField txtFName;
+    @FXML
+    private TextField txtLName;
+    @FXML
+    private TextField txtEmail;
+    @FXML
+    private TextField txtMajor;
 
+    @FXML
+    private Button btnAdd;
+    @FXML
+    private Button btnUpdate;
+    @FXML
+    private Button btnDelete;
+    @FXML
+    private Button btnClear;
 
-    @FXML private Button btnAdd;
-    @FXML private Button btnUpdate;
-    @FXML private Button btnDelete;
-    @FXML private Button btnClear;
+    @FXML
+    private TableView<Student> tblStudents;
+    @FXML
+    private TableColumn<Student, String> colCne;
+    @FXML
+    private TableColumn<Student, String> colfName;
+    @FXML
+    private TableColumn<Student, String> collName;
+    @FXML
+    private TableColumn<Student, String> colEmail;
 
-    @FXML private TableView<Student> tblStudents;
-    @FXML private TableColumn<Student, String> colCne;
-    @FXML private TableColumn<Student, String> colfName;
-    @FXML private TableColumn<Student, String> collName;
-    @FXML private TableColumn<Student, String> colEmail;
-
-    @FXML private TableColumn<Student, String> colMajor;
-
+    @FXML
+    private TableColumn<Student, String> colMajor;
 
     private StudentService studentService = DataManager.studentService;
     private ObservableList<Student> studentList = FXCollections.observableArrayList();
-
+    private final LoanService loanService = DataManager.loanService;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -78,7 +96,8 @@ public class StudentController implements Initializable {
 
         alert.showAndWait();
     }
- @FXML
+
+    @FXML
     private void addStudent() {
 
         if (txtCne.getText().isEmpty()
@@ -122,6 +141,7 @@ public class StudentController implements Initializable {
         txtEmail.clear();
         txtMajor.clear();
     }
+
     @FXML
     private void updateStudent() {
 
@@ -151,7 +171,14 @@ public class StudentController implements Initializable {
 
             return;
         }
+        if (loanService.hasActiveLoan(selectedStudent)) {
 
+            showAlert(Alert.AlertType.ERROR,
+                    "Delete Student",
+                    "This student cannot be deleted because they have an active loan.");
+
+            return;
+        }
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
 
         confirm.setTitle("Delete Student");

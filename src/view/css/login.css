@@ -1,0 +1,131 @@
+/* login.css — standalone login scene
+   Left: dark gradient brand panel.  Right: white form panel. */
+
+/* ---------- Root ---------- */
+.login-root {
+    -fx-background-color: #111827;
+}
+
+/* ════════════════════════════════════════
+   LEFT PANEL — brand / marketing side
+   ════════════════════════════════════════ */
+.brand-panel {
+    -fx-background-color: linear-gradient(to bottom, #1e3a5f, #111827);
+    -fx-padding: 60 48 60 48;
+}
+
+.brand-icon {
+    -fx-font-size: 56px;
+}
+
+.brand-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.brand-title-light {
+    -fx-text-fill: #93c5fd;
+    -fx-font-weight: normal;
+}
+
+.brand-tagline {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
+    -fx-text-alignment: CENTER;
+    -fx-alignment: CENTER;
+    -fx-wrap-text: true;
+}
+
+/* Feature bullet list */
+.brand-features {
+    -fx-padding: 0 0 0 12;
+}
+
+.feature-dot {
+    -fx-text-fill: #3b82f6;
+    -fx-font-size: 8px;
+}
+
+.feature-text {
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 13px;
+}
+
+/* ════════════════════════════════════════
+   RIGHT PANEL — form side
+   ════════════════════════════════════════ */
+.form-panel {
+    -fx-background-color: #f8fafc;
+}
+
+/* The white card sitting in the centre of the right panel */
+.form-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 6);
+}
+
+/* Form typography */
+.form-title {
+    -fx-text-fill: #111827;
+    -fx-font-weight: bold;
+}
+
+.form-subtitle {
+    -fx-text-fill: #6b7280;
+    -fx-font-size: 13px;
+}
+
+.form-label {
+    -fx-text-fill: #374151;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+}
+
+/* Input fields */
+.form-field {
+    -fx-background-color: #f9fafb;
+    -fx-background-radius: 8;
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 8;
+    -fx-border-width: 1.5;
+    -fx-padding: 10 12 10 12;
+    -fx-font-size: 13px;
+    -fx-pref-height: 42;
+}
+.form-field:focused {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #2563eb;
+    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.18), 6, 0, 0, 0);
+}
+
+/* Error message */
+.error-label {
+    -fx-text-fill: #dc2626;
+    -fx-font-size: 12px;
+    -fx-background-color: #fef2f2;
+    -fx-background-radius: 6;
+    -fx-border-color: #fecaca;
+    -fx-border-radius: 6;
+    -fx-padding: 8 12 8 12;
+}
+
+/* Login button */
+.login-btn {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 8;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 0 12 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.35), 8, 0, 0, 3);
+}
+.login-btn:hover {
+    -fx-background-color: #1d4ed8;
+    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.50), 12, 0, 0, 4);
+}
+.login-btn:pressed {
+    -fx-background-color: #1e40af;
+    -fx-effect: none;
+}

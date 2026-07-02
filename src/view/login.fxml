@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!--
+  Standalone scene — not embedded in the dashboard.
+  Root is an HBox split into two halves:
+    LEFT  : dark branded panel (logo, tagline, decorative blurbs)
+    RIGHT : white form panel (username, password, login button)
+-->
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="860.0" styleClass="login-root" stylesheets="@css/login.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+
+      <!-- ═══════════════ LEFT PANEL — Branding ═══════════════ -->
+      <VBox alignment="CENTER" prefWidth="400.0" spacing="0.0" styleClass="brand-panel">
+         <children>
+
+            <!-- Big icon -->
+            <Label styleClass="brand-icon" text="📚" textFill="#00c3ff" />
+
+            <!-- App name -->
+            <Label styleClass="brand-title" text="Library">
+               <font><Font size="36.0" /></font>
+               <VBox.margin><Insets top="16.0" /></VBox.margin>
+            </Label>
+            <Label styleClass="brand-title-light" text="Management System">
+               <font><Font size="18.0" /></font>
+            </Label>
+
+            <!-- Tagline -->
+            <Label styleClass="brand-tagline" text="Your complete library solution" wrapText="true">
+               <VBox.margin><Insets top="18.0" /></VBox.margin>
+            </Label>
+
+            <!-- Decorative feature bullets -->
+            <VBox spacing="10.0" styleClass="brand-features">
+               <VBox.margin><Insets top="40.0" /></VBox.margin>
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label styleClass="feature-dot" text="●" />
+                        <Label styleClass="feature-text" text="Manage books and catalog" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label styleClass="feature-dot" text="●" />
+                        <Label styleClass="feature-text" text="Track student registrations" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label styleClass="feature-dot" text="●" />
+                        <Label styleClass="feature-text" text="Monitor loans and returns" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label styleClass="feature-dot" text="●" />
+                        <Label styleClass="feature-text" text="Real-time statistics" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+
+         </children>
+      </VBox>
+
+      <!-- ═══════════════ RIGHT PANEL — Login form ═══════════════ -->
+      <StackPane styleClass="form-panel" HBox.hgrow="ALWAYS">
+         <children>
+            <VBox alignment="CENTER" maxWidth="340.0" spacing="0.0" styleClass="form-card">
+               <padding>
+                  <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+               </padding>
+               <children>
+
+                  <!-- Form header -->
+                  <Label styleClass="form-title" text="Welcome back">
+                     <font><Font size="24.0" /></font>
+                  </Label>
+                  <Label styleClass="form-subtitle" text="Sign in to your account">
+                     <VBox.margin><Insets bottom="32.0" top="6.0" /></VBox.margin>
+                  </Label>
+
+                  <!-- Username -->
+                  <Label styleClass="form-label" text="Username">
+                     <VBox.margin><Insets bottom="6.0" /></VBox.margin>
+                  </Label>
+                  <TextField fx:id="txtUsername" promptText="Enter your username" styleClass="form-field">
+                     <VBox.margin><Insets bottom="18.0" /></VBox.margin>
+                  </TextField>
+
+                  <!-- Password -->
+                  <Label styleClass="form-label" text="Password">
+                     <VBox.margin><Insets bottom="6.0" /></VBox.margin>
+                  </Label>
+                  <PasswordField fx:id="txtPassword" promptText="Enter your password" styleClass="form-field">
+                     <VBox.margin><Insets bottom="8.0" /></VBox.margin>
+                  </PasswordField>
+
+                  <!-- Error message (hidden until needed) -->
+                  <Label fx:id="lblError" styleClass="error-label" text="" visible="false" wrapText="true">
+                     <VBox.margin><Insets bottom="12.0" top="4.0" /></VBox.margin>
+                  </Label>
+
+                  <!-- Spacer so button lands at the right visual weight -->
+                  <Region prefHeight="8.0" />
+
+                  <!-- Login button -->
+                  <Button fx:id="btnLogin" defaultButton="true" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleLogin" styleClass="login-btn" text="Sign In">
+                     <VBox.margin><Insets top="8.0" /></VBox.margin>
+                  </Button>
+
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+
+   </children>
+</HBox>

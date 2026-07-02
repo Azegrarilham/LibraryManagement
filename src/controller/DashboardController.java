@@ -4,8 +4,11 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 
 
@@ -24,6 +27,7 @@ public class DashboardController {
     @FXML
     public void initialize() {
         setActiveButton(null);
+        openStatistics();
     }
 
     @FXML
@@ -76,8 +80,16 @@ public class DashboardController {
         }
     }
     public void Logout() {
-        // Implement logout logic here
-        this.contentPane.getScene().getWindow().hide(); // Close the current window
-        System.out.println("Logging out...");
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
+            Parent loginRoot = loader.load();
+
+            Stage stage = (Stage) contentPane.getScene().getWindow();
+            stage.setScene(new Scene(loginRoot));
+            stage.setTitle("Library Management System — Login");
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -2,7 +2,9 @@ package service;
 
 import java.util.ArrayList;
 
+import model.Book;
 import model.Loan;
+import model.Student;
 import util.FileManager;
 
 public class LoanService {
@@ -29,6 +31,22 @@ public class LoanService {
     public void deleteLoan(Loan loan) {
         loans.remove(loan);
         saveLoans();
+    }
+
+    public String generateLoanNumber() {
+
+        int max = 0;
+
+        for (Loan loan : loans) {
+            String number = loan.getLoanNumber().replace("L", "");
+            int value = Integer.parseInt(number);
+
+            if (value > max) {
+                max = value;
+            }
+        }
+
+        return String.format("L%03d", max + 1);
     }
 
     public Loan findLoanByNumber(String loanNumber) {
@@ -70,6 +88,7 @@ public class LoanService {
 
         return false;
     }
+
     public ArrayList<Loan> getReturnedLoans() {
 
         ArrayList<Loan> returned = new ArrayList<>();
@@ -95,6 +114,7 @@ public class LoanService {
 
         return count;
     }
+
     public int getTotalLoans() {
         return loans.size();
     }
@@ -112,4 +132,27 @@ public class LoanService {
         return count;
     }
 
+    public boolean hasActiveLoan(Book book) {
+
+        for (Loan loan : loans) {
+            if (loan.getBook().equals(book)
+                    && loan.getStatus().equals("Borrowed")) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean hasActiveLoan(Student student) {
+
+        for (Loan loan : loans) {
+            if (loan.getStudent().equals(student)
+                    && loan.getStatus().equals("Borrowed")) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

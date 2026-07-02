@@ -77,14 +77,14 @@ public class LoanController implements Initializable {
 
         cmbStatus.getItems().addAll("Borrowed", "Returned");
         cmbStatus.setValue("Borrowed");
-
+        txtLoanNumber.setText(loanService.generateLoanNumber());
         colLoanNumber.setCellValueFactory(new PropertyValueFactory<>("loanNumber"));
         colStudent.setCellValueFactory(new PropertyValueFactory<>("student"));
         colBook.setCellValueFactory(new PropertyValueFactory<>("book"));
         colBorrowDate.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
         colReturnDate.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-
+        txtLoanNumber.setEditable(false);
         loanList.setAll(loanService.getAllLoans());
         tblLoans.setItems(loanList);
 
@@ -246,18 +246,18 @@ public class LoanController implements Initializable {
 
     @FXML
     private void clearForm() {
-        txtLoanNumber.clear();
+        txtLoanNumber.setText(loanService.generateLoanNumber());
         cmbStudent.getSelectionModel().clearSelection();
         cmbBook.getSelectionModel().clearSelection();
         cmbStatus.getSelectionModel().clearSelection();
         dpBorrowDate.setValue(null);
         dpReturnDate.setValue(null);
         tblLoans.getSelectionModel().clearSelection();
-        txtLoanNumber.setDisable(false);
         cmbStudent.setDisable(false);
         cmbBook.setDisable(false);
         dpBorrowDate.setDisable(false);
         cmbStatus.setDisable(false);
+        txtLoanNumber.setDisable(true);
     }
 
     private void showAlert(Alert.AlertType type,
